@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "PaversFRP",
+        "repositoryURL": "https://github.com/KeithPiTsui/PaversFRP.git",
+        "state": {
+          "branch": null,
+          "revision": "261322b29ab6bba1ca46a6e6ca8ccdbf1127fd40",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "PaversSugar",
+        "repositoryURL": "https://github.com/KeithPiTsui/PaversSugar.git",
+        "state": {
+          "branch": null,
+          "revision": "4589b7a40f2b502ba3a003fb9b05cd5d5afa2f78",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
