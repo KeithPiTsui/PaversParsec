@@ -13,9 +13,15 @@ public typealias Line = Int
 public typealias Column = Int
 
 public struct SourcePos {
-  let sourceName: SourceName
-  let line: Line
-  let column: Column
+  public let sourceName: SourceName
+  public let line: Line
+  public let column: Column
+  
+  public init(sourceName: SourceName, line: Line, column: Column) {
+    self.sourceName = sourceName
+    self.line = line
+    self.column = column
+  }
 }
 
 extension SourcePos: Equatable {}

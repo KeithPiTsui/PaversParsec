@@ -11,6 +11,13 @@ public struct ParserState<S, U> {
   public let stateInput: S
   public let statePos: SourcePos
   public let stateUser: U
+  
+  public init(stateInput: S, statePos: SourcePos, stateUser: U) {
+    self.stateInput = stateInput
+    self.statePos = statePos
+    self.stateUser = stateUser
+  }
+  
 }
 extension ParserState where S == String, U == () {
   public init(_ input: String) {
