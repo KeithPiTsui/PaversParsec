@@ -7,7 +7,8 @@ Its re-implementation follows the idea of Daan Leijen and Erik Meijer in their p
 Moreover this framework interprets the Haskell code of [Parsec](https://github.com/haskell/parsec) in to Swift with some changes to adapt features of Swift, like laziness, generic.
 
 ## Dependencies
-This framework depends on [PaversFRP](https://github.com/KeithPiTsui/PaversFRP) and [PaversSugar] (https://github.com/KeithPiTsui/PaversSugar).
+This framework depends on [PaversFRP](https://github.com/KeithPiTsui/PaversFRP) 
+and [PaversSugar](https://github.com/KeithPiTsui/PaversSugar).
 
 ## Uses
 
