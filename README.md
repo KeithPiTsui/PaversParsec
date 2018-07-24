@@ -18,3 +18,8 @@ One is for interpretion of JSON. [PaversJSON](https://github.com/KeithPiTsui/Pav
 
 Another is for compiler of [Kaleidoscope](https://llvm.org/docs/tutorial/LangImpl01.html). [SwiftParsecKaleidoscope](https://github.com/KeithPiTsui/SwiftParsecKaleidoscope)
 
+## To-do
+
+1. More use case for this library.
+
+2. Make API documentation more descriptive and user-friendly.
