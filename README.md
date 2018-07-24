@@ -15,5 +15,5 @@ There are two applications of this framework.
 
 One is for interpretion of JSON. [PaversJSON](https://github.com/KeithPiTsui/PaversJSON)
 
-Another is for compiler of [Kaleidoscope](https://llvm.org/docs/tutorial/LangImpl01.html). [Kaleidoscope](https://github.com/KeithPiTsui/SwiftParsecKaleidoscope)
+Another is for compiler of [Kaleidoscope](https://llvm.org/docs/tutorial/LangImpl01.html). [SwiftParsecKaleidoscope](https://github.com/KeithPiTsui/SwiftParsecKaleidoscope)
 
