@@ -17,8 +17,9 @@ public struct ParserState<S, U> {
     self.statePos = statePos
     self.stateUser = stateUser
   }
-  
 }
+
+
 extension ParserState where S == String, U == () {
   public init(_ input: String) {
     self.stateInput = input
@@ -26,6 +27,29 @@ extension ParserState where S == String, U == () {
     self.stateUser = ()
   }
 }
+
+
+extension ParserState: ExpressibleByExtendedGraphemeClusterLiteral where S == String, U == ()  {
+  public typealias ExtendedGraphemeClusterLiteralType = String
+  public init(extendedGraphemeClusterLiteral value: String) {
+    self = ParserState.init(value)
+  }
+}
+
+extension ParserState: ExpressibleByUnicodeScalarLiteral where S == String, U == ()  {
+  public typealias UnicodeScalarLiteralType = String
+  public init(unicodeScalarLiteral value: String) {
+    self = ParserState.init(value)
+  }
+}
+
+extension ParserState: ExpressibleByStringLiteral where S == String, U == ()  {
+  public typealias StringLiteralType = String
+  public init(stringLiteral value: String) {
+    self = ParserState.init(value)
+  }
+}
+
 
 public typealias ParserStateS = ParserState<String, ()>
 public func makeParserState(_ input: String) -> ParserStateS {

@@ -58,3 +58,25 @@ public func >>- <S, U, A, B> (_ a: @escaping LazyParser<S, U, A>, _ b: Parser<S,
 public func >>- <S, U, A, B> (_ a: Parser<S, U, A>, _ b: Parser<S, U, B>) -> Parser<S, U, B> {
   return a >>- {_ in b}
 }
+
+
+// m a -> m b -> m a
+public func -<< <S, U, A, B> (_ a: @escaping LazyParser<S, U, A>, _ b: @escaping LazyParser<S, U, B>)
+  -> LazyParser<S, U, A> {
+    return a >>- {a in b >>- {_ in pure(a) as LazyParser<S, U, A>} }
+}
+
+
+public func -<< <S, U, A, B> (_ a: Parser<S, U, A>, _ b: @escaping LazyParser<S, U, B>)
+  -> LazyParser<S, U, A> {
+    return {a} -<< b
+}
+
+public func -<< <S, U, A, B> (_ a: @escaping LazyParser<S, U, A>, _ b: Parser<S, U, B>)
+  -> LazyParser<S, U, A> {
+    return a -<< {b}
+}
+
+public func -<< <S, U, A, B> (_ a: Parser<S, U, A>, _ b: Parser<S, U, B>) -> Parser<S, U, A> {
+  return ({a} -<< {b})()
+}

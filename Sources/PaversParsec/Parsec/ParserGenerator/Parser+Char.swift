@@ -148,10 +148,21 @@ public func char<S, U>(_ c: Character) -> Parser<S, U, Character>
     return satisfy(curry(==)(c))
 }
 
+public func not<S, U>(_ c: Character) -> Parser<S, U, Character>
+  where S: ParserStream, S.Element == Character {
+    return satisfy(curry(!=)(c))
+}
+
 //anyChar :: (Stream s m Char) => ParsecT s u m Char
 //anyChar             = satisfy (const True)
 public func anyChar <S,U> ()
   -> Parser<S,U,Character>
   where S: ParserStream, S.Element == Character{
     return satisfy(trueness)
+}
+
+public func anyOneCharString<S, U>()
+  -> Parser<S, U, String>
+  where S: ParserStream, S.Element == Character{
+    return anyChar().fmap(String.init)
 }
