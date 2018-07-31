@@ -10,7 +10,52 @@ Moreover this framework interprets the Haskell code of [Parsec](https://github.c
 This framework depends on [PaversFRP](https://github.com/KeithPiTsui/PaversFRP) 
 and [PaversSugar](https://github.com/KeithPiTsui/PaversSugar).
 
-## Uses
+## Example
+
+Given PaversParsec installed with Swift package manager.
+We construct a parser for parsing parentheses matching, that is an example from [Parsec](https://github.com/haskell/parsec).
+
+```swift
+import PaversParsec
+import PaversFRP
+
+func parenSet () -> ParserS<()> {
+  let left: ParserS<()> = char("(").fmap(terminal) <?> "("
+  let right: ParserS<()> = char(")").fmap(terminal) <?> ")"
+  let mParen: LazyParserS<()> = fmap( many(parenSet), terminal)
+  return left >>- mParen >>- right
+}
+
+let parens: LazyParserS<()> = (many(parenSet) >>- eof()) <|> eof()
+let parser = parens()
+
+let input1 = ParserStateS("()(())")
+let result1 = parser.unParser(input1)
+print(result1)
+/**
+ParserResult: Consumed
+Parse OK
+Got: ():()
+*/
+
+let input = ParserStateS("(")
+let result = parser.unParser(input)
+print(result)
+/**
+ParserResult: Consumed
+Parse Failed
+Message:
+{file: init, line: 1, column: 2}: 
+msgUnexpected msgEndOfInput
+msgExpecting )
+*/
+```
+
+The `Parse OK` results indicate successes: the parentheses matched.
+The `Parse Failed` result indicates a parse failure, and is detailed
+with an error message.
+
+## Use Cases
 
 There are two applications of this framework.
 
