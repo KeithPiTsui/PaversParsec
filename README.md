@@ -1,6 +1,6 @@
 # PaversParsec
 
-A framework rewritten Haskell Parsec library in Swift. 
+A framework rewritten Haskell [Parsec](https://github.com/haskell/parsec) library in Swift. 
 
 Its re-implementation follows the idea of Daan Leijen and Erik Meijer in their paper [Parsec: Direct Style Monadic Parser Combinators For The Real World](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/parsec-paper-letter.pdf)
 
