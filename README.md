@@ -12,8 +12,47 @@ and [PaversSugar](https://github.com/KeithPiTsui/PaversSugar).
 
 ## Example
 
-Given PaversParsec installed with Swift package manager.
-We construct a parser for parsing parentheses matching, that is an example from [Parsec](https://github.com/haskell/parsec).
+That is an example from [Parsec](https://github.com/haskell/parsec).
+
+0. The following example use Xcode 10 as build environment. Given you have installed [xcode 10](https://developer.apple.com/download/)
+```bash
+sudo xcode-select --switch /Applications/Xcode10-beta.app/Contents/Developer
+```
+
+1. Install PaversParsec with Swift package manager.
+
+```bash
+mkdir ParenParser
+cd ParenParser
+swift package init --type executable
+vi Package.swift
+```
+
+2. Edit Package.swift to add dependencies for our ParenParser.
+```swift
+// swift-tools-version:4.2
+// The swift-tools-version declares the minimum version of Swift required to build this package.
+
+import PackageDescription
+
+let package = Package(
+    name: "ParenParser",
+    dependencies: [
+        // Dependencies declare other packages that this package depends on.
+      .package(url: "https://github.com/KeithPiTsui/PaversFRP.git", from: "1.0.0"),
+      .package(url: "https://github.com/KeithPiTsui/PaversParsec.git", from: "1.0.1"),
+    ],
+    targets: [
+        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
+        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(
+            name: "ParenParser",
+            dependencies: ["PaversFRP", "PaversParsec"]),
+    ]
+)
+```
+
+3. We construct a parser for parsing parentheses matching by edit Sources/ParenParser/main.swift as following.
 
 ```swift
 import PaversParsec
@@ -38,6 +77,8 @@ Parse OK
 Got: ():()
 */
 
+print("------------------")
+
 let input = ParserStateS("(")
 let result = parser.unParser(input)
 print(result)
@@ -49,6 +90,13 @@ Message:
 msgUnexpected msgEndOfInput
 msgExpecting )
 */
+```
+
+4. Build and execute.
+
+```bash
+swift build
+./.build/x86_64-apple-macosx10.10/debug/ParenParser
 ```
 
 The `Parse OK` results indicate successes: the parentheses matched.
