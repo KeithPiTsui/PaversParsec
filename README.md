@@ -54,6 +54,10 @@ let package = Package(
 
 3. We construct a parser for parsing parentheses matching by edit Sources/ParenParser/main.swift as following.
 
+```bash
+vi Sources/ParenParser/main.swift
+```
+
 ```swift
 import PaversParsec
 import PaversFRP
